@@ -11,6 +11,18 @@ const server = express();
 // to enable parsing of json bodies for post requests
 server.use(bodyParser.json());
 
+server.get('/posts', (req, res) => {
+  res.status(200).send('<h2> posts </h2>');
+});
+server.post('/posts', (req, res) => {
+  const { title } = req.body;
+  res.send(`nice title: ${title}`);
+});
+
+const port = 8080;
+server.listen(port, () => {
+  console.log(`i see you on port ${port}`);
+});
 // TODO: your code to handle requests
 
 module.exports = { posts, server };
