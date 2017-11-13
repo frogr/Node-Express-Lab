@@ -16,7 +16,8 @@ server.get('/posts', (req, res) => {
 });
 server.post('/posts', (req, res) => {
   const { title } = req.body;
-  res.send(`nice title: ${title}`);
+  const { contents } = req.body;
+  res.send(`title: ${title} || content: ${content}`);
 });
 
 const port = 8080;
