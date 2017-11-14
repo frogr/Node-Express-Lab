@@ -8,11 +8,13 @@ const STATUS_USER_ERROR = 422;
 const posts = [
   {
     title: 'pulp fiction',
-    content: 'two old-enough-to-know-better men shoot a lot of people'
+    content: 'two old-enough-to-know-better men shoot a lot of people',
+    id: 1
   },
   {
     title: 'lord of the rings',
-    content: 'a bunch of kids go on a journey with a ring'
+    content: 'a bunch of kids go on a journey with a ring',
+    id: 2
   }
 ];
 
@@ -24,12 +26,11 @@ server.get('/posts', (req, res) => {
   res.status(200).send(JSON.stringify(posts));
 });
 server.post('/posts', (req, res) => {
-  const { title } = req.body;
-  const { contents } = req.body;
+  const { title, contents, id } = req.body;
   if (title !== undefined && contents !== undefined) {
     posts.push(req.body);
   }
-  res.send(`title: ${title} || content: ${contents}`);
+  res.json(`title: ${title} || content: ${contents} || id: ${id}`);
 });
 
 const port = 8080;
